@@ -8,7 +8,7 @@ exports.default = class Template {
             // URL
             { id: (process.env.SM_PRODUCTION ? '164337216' : '164341787'), answers: [{}] },
             // yes/no
-            { id: (process.env.SM_PRODUCTION ? '' : '164341788'), answers: [{}] }
+            { id: (process.env.SM_PRODUCTION ? '164337720' : '164341788'), answers: [{}] }
           ]
         }
       ]
