@@ -12,9 +12,13 @@ before_deploy:
 deploy:
   - provider: script
     script: yarn deploy:prod
+    skip-cleanup: true
+    keep-history: true
     on:
       branch: master
   - provider: script
     script: yarn deploy:dev
+    skip-cleanup: true
+    keep-history: true
     on:
       branch: develop
