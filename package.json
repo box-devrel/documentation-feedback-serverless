@@ -4,9 +4,6 @@
   "description": "Serverless component for our feedback widget",
   "main": "handler.js",
   "scripts": {
-    "deploy:dev": "sls deploy -s dev",
-    "deploy:prod": "sls deploy -s prod",
-    "deploy": "yarn deploy:dev",
     "invoke:short": "sls invoke -f short -p samples/short.json -s dev",
     "invoke:update": "sls invoke -f short -p samples/short.update.json -s dev",
     "invoke:long": "sls invoke -f long -p samples/long.json -s dev",

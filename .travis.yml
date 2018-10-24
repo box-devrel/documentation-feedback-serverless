@@ -11,13 +11,13 @@ before_deploy:
   - sls config credentials -p aws -k $AWS_KEY -s $AWS_SECRET -o
 deploy:
   - provider: script
-    script: yarn deploy:prod
+    script: sls deploy -s prod
     skip-cleanup: true
     keep-history: true
     on:
       branch: master
   - provider: script
-    script: yarn deploy:dev
+    script: sls deploy -s dev
     skip-cleanup: true
     keep-history: true
     on:
