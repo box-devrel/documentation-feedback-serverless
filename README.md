@@ -21,23 +21,15 @@ sls config credentials --provider aws --key [AWS_KEY] --secret [AWS_SECRET] -o
 
 ### Deployment
 
-#### Production
+Do not deploy from a local device. Instead let Travis do all deployment.
 
-Production is pushed to AWS using Travis.
+The `master` branch is automatically deployed as the `prod` stage, and the
+`develop` branch is deployed as the `dev` stage.
 
-#### "Staging"
+Currently, the URLs for both these stages are:
 
-You can test a staging environment by deploying the dev stage to AWS.
-
-```sh
-yarn deploy # deploys to AWS using the DEV stage
-```
-
-This will output a URL in the form of:
-
-```sh
-https://[ID].execute-api.us-east-1.amazonaws.com/[env]/feedback
-```
+* `prod`: `https://hubzs7tts2.execute-api.us-east-1.amazonaws.com/prod/`
+* `dev`: `TBD`
 
 ### Testing locally
 
