@@ -1,0 +1,18 @@
+language: node_js
+cache: yarn
+node_js:
+  - 8.10
+script:
+  - yarn test
+before_deploy: 
+  - npm install serverless -g
+  - sls config credentials -p aws -k $AWS_KEY -s $AWS_SECRET -o
+deploy:
+  - provider: script
+    script: yarn deploy:prod
+    on:
+      branch: master
+  - provider: script
+    script: yarn deploy:dev
+    on:
+      branch: develop

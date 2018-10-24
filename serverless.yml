@@ -1,0 +1,34 @@
+app: documentation
+service: feedback
+tenant: boxdev
+
+custom:
+  stage: ${opt:stage, self:provider.stage}
+  env:
+    SM_PRODUCTION:
+      prod: "true"
+      dev: ""
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  environment:
+    SM_ACCESS_TOKEN: ${file(./src/utils/dotenv.js):vars.sm_access_token}
+    SM_PRODUCTION: ${self:custom.env.SM_PRODUCTION.${self:custom.stage}}
+
+functions:
+  short:
+    handler: src/handlers/short.handler
+    events:
+      - http:
+         path: feedback/short
+         method: post
+         cors: true
+
+  long:
+    handler: src/handlers/long.handler
+    events:
+      - http:
+          path: feedback/long
+          method: post
+          cors: true
