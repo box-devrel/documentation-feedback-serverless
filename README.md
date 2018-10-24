@@ -11,12 +11,11 @@ npm install -g yarn
 yarn install
 ```
 
-Install serverless CLI:
+### Development
 
 ```sh
-npm install -g serverless
-sls login
-sls config credentials --provider aws --key [AWS_KEY] --secret [AWS_SECRET] -o
+yarn test --watch # to watch all the tests
+yarn lint --fix # to run the linter and fix the basics
 ```
 
 ### Deployment
@@ -28,8 +27,8 @@ The `master` branch is automatically deployed as the `prod` stage, and the
 
 Currently, the URLs for both these stages are:
 
-* `prod`: `https://hubzs7tts2.execute-api.us-east-1.amazonaws.com/prod/`
-* `dev`: `TBD`
+* `prod`: `https://hubzs7tts2.execute-api.us-east-1.amazonaws.com/prod`
+* `dev`: `https://fkzpk1kpt3.execute-api.us-east-1.amazonaws.com/dev`
 
 ### Testing locally
 
@@ -42,4 +41,15 @@ yarn invoke:local:short # writes a short yes/no response
 # and long.json samples with the ID from the response above
 yarn invoke:local:update # updates the yes/no response
 yarn invoke:local:long # updates the yes/no response with name, email, and note
+```
+
+### Testing remotely
+
+```sh
+yarn invoke:short # writes a short yes/no response
+
+# for the next two, you will need to update the short.update.json
+# and long.json samples with the ID from the response above
+yarn invoke:update # updates the yes/no response
+yarn invoke:long # updates the yes/no response with name, email, and note
 ```
