@@ -1,24 +1,27 @@
 language: node_js
 cache: yarn
 node_js:
-  - 8.10.0
+- 8.10.0
 before_install:
-  - npm install -g yarn
+- npm install -g yarn
 script:
-  - yarn test
-before_deploy: 
-  - npm install serverless -g
-  - sls config credentials -p aws -k $AWS_KEY -s $AWS_SECRET -o
+- yarn test
+before_deploy:
+- npm install serverless -g
+- sls config credentials -p aws -k $AWS_KEY -s $AWS_SECRET -o
 deploy:
-  - provider: script
-    script: sls deploy -s prod
-    skip-cleanup: true
-    keep-history: true
-    on:
-      branch: master
-  - provider: script
-    script: sls deploy -s dev
-    skip-cleanup: true
-    keep-history: true
-    on:
-      branch: develop
+- provider: script
+  script: sls deploy -s prod
+  skip-cleanup: true
+  keep-history: true
+  on:
+    branch: master
+- provider: script
+  script: sls deploy -s dev
+  skip-cleanup: true
+  keep-history: true
+  on:
+    branch: develop
+notifications:
+  slack:
+    secure: Uy0apQ1XUEWc55I2ny+s17chcaQoJtH4TW4J3w4tzeFXWK0FNmdzoKzwblUaEGXOqNO5ANmdOieB/5HJ7vTfCbpjQDL2IIeXDmP7/ACe+8Qja4qvSKbXQEDlwlI/2k/NUpK5nI5Gq0jubH4IiTWxQM9cRdPJIz7LyLHnMG3bSDzZAsUAnKHffOrwAd09J2mufMOky8r3m0G2SwSN4LnUos6a7hnu8wm7X5n8Jch9CmgRdNXGpr3RxZzljite6rDwXHzbNTeYLyeQTL9nIklCdJ8eK5d5sChqcPP2cPufQirMD2nCfSeLBxP2funvITuKDKcNbxrhM9P+vyDMDElHvMeLSlrDRwU4xC63ZnYRF+SWfGAhFJU9IcrZz4YOSV5400SQ4yg/iiuYWwV5y5RiI/hWg/rZ2nmTNnH7W11qDmu5hvwtMIc9I1Uixt5fnQOo2QnKM2xIhVTIw8wzflywt/bAFXTkqWMe2v0PLU4InQ3CTIQze1Kyj3AwiI3COA/ZK89HdG1WoBDxFuahFZUEjVfSl+On3YE7d6PHFlxsZshTWGdK3F0jYa3hB41qVfbPagDAaLjusTktou/o/lyevw0KCBn5OJRgdRf8PtYn+BYORHD//1lfpP8lMl9pH1WWWJSeQLBb3TgXxOcqOxva/U1482btuLciG/oWC+i3qpc=
