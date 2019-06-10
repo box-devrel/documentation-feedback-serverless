@@ -8,7 +8,6 @@ script:
 - yarn test
 before_deploy:
 - npm install serverless -g
-- sls config credentials -p aws -k $AWS_KEY -s $AWS_SECRET -o
 deploy:
 - provider: script
   script: sls deploy -s prod
