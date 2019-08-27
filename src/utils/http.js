@@ -12,7 +12,7 @@ exports.default = class HTTP {
 
   // POST a new short response
   postResponse (data) {
-    let url = `${BASE_URL}/v3/collectors/${this.SURVEY_COLLECTOR_ID}/responses`
+    const url = `${BASE_URL}/v3/collectors/${this.SURVEY_COLLECTOR_ID}/responses`
     return this.fetch(url, this.options('POST', data))
       .then(res => res.json())
       .catch(console.error)
@@ -20,7 +20,7 @@ exports.default = class HTTP {
 
   // PUT an update to a response
   putResponse (id, data) {
-    let url = `${BASE_URL}/v3/collectors/${this.SURVEY_COLLECTOR_ID}/responses/${id}`
+    const url = `${BASE_URL}/v3/collectors/${this.SURVEY_COLLECTOR_ID}/responses/${id}`
     return this.fetch(url, this.options('PUT', data))
       .then(res => res.json())
       .catch(console.error)
@@ -28,7 +28,7 @@ exports.default = class HTTP {
 
   // Determines the CORS headers for this environment
   static corsHeaders () {
-    let origin = (process.env.SM_PRODUCTION ? 'https://developer.box.com' : '*')
+    const origin = (process.env.SM_PRODUCTION ? 'https://developer.box.com' : '*')
 
     return {
       'Access-Control-Allow-Origin': origin,
@@ -44,7 +44,7 @@ exports.default = class HTTP {
       mode: 'cors',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${this.SURVEY_MONKEY_ACCESS_TOKEN}`
+        Authorization: `Bearer ${this.SURVEY_MONKEY_ACCESS_TOKEN}`
       },
       body: JSON.stringify(data)
     }

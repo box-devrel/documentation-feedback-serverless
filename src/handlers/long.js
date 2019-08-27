@@ -8,8 +8,8 @@ class Handler {
   }
 
   async handle (event) {
-    let data = event.body ? JSON.parse(event.body) : event
-    let response = await this.submitLong(data)
+    const data = event.body ? JSON.parse(event.body) : event
+    const response = await this.submitLong(data)
 
     return {
       statusCode: 201,
@@ -19,7 +19,7 @@ class Handler {
   }
 
   async submitLong (data) {
-    let answer = this.template.renderLong(data)
+    const answer = this.template.renderLong(data)
     return this.http.putResponse(data.id, answer)
   }
 }

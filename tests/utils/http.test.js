@@ -26,13 +26,13 @@ test('.postResponse()', () => {
   expect(http.fetch).toHaveBeenCalledWith(
     'https://api.surveymonkey.com/v3/collectors/<SURVEY_COLLECTOR_ID>/responses',
     {
-      'body': '{"useful":true}',
-      'headers': {
-        'Authorization': 'Bearer <SURVEY_MONKEY_ACCESS_TOKEN>',
+      body: '{"useful":true}',
+      headers: {
+        Authorization: 'Bearer <SURVEY_MONKEY_ACCESS_TOKEN>',
         'Content-Type': 'application/json'
       },
-      'method': 'POST',
-      'mode': 'cors'
+      method: 'POST',
+      mode: 'cors'
     }
   )
 })
@@ -43,29 +43,29 @@ test('.putResponse()', () => {
   expect(http.fetch).toHaveBeenCalledWith(
     'https://api.surveymonkey.com/v3/collectors/<SURVEY_COLLECTOR_ID>/responses/<RESPONSE_ID>',
     {
-      'body': '{"useful":true}',
-      'headers': {
-        'Authorization': 'Bearer <SURVEY_MONKEY_ACCESS_TOKEN>',
+      body: '{"useful":true}',
+      headers: {
+        Authorization: 'Bearer <SURVEY_MONKEY_ACCESS_TOKEN>',
         'Content-Type': 'application/json'
       },
-      'method': 'PUT',
-      'mode': 'cors'
+      method: 'PUT',
+      mode: 'cors'
     }
   )
 })
 
 test('.corsHeaders()', () => {
-  let oldEnv = process.env.SM_PRODUCTION
+  const oldEnv = process.env.SM_PRODUCTION
 
   process.env.SM_PRODUCTION = ''
-  let developmentHeaders = HTTP.corsHeaders()
+  const developmentHeaders = HTTP.corsHeaders()
   expect(developmentHeaders).toEqual({
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Credentials': true
   })
 
   process.env.SM_PRODUCTION = true
-  let productionHeaders = HTTP.corsHeaders()
+  const productionHeaders = HTTP.corsHeaders()
   expect(productionHeaders).toEqual({
     'Access-Control-Allow-Origin': 'https://developer.box.com',
     'Access-Control-Allow-Credentials': true

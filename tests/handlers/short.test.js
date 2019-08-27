@@ -11,12 +11,12 @@ test('Handler to be a class', () => {
 
 describe('.handle() - new', () => {
   test('without a body', () => {
-    let handler = new Handler()
+    const handler = new Handler()
     handler.http.postResponse = jest.fn().mockImplementation(() => Promise.resolve({
       id: '123'
     }))
 
-    let response = handler.handle({
+    const response = handler.handle({
       url: 'URL',
       useful: false
     })
@@ -25,24 +25,24 @@ describe('.handle() - new', () => {
 
     return response.then((res) => {
       expect(res).toEqual({
-        'body': '{"id":"123"}',
-        'headers': {
+        body: '{"id":"123"}',
+        headers: {
           'Access-Control-Allow-Credentials': true,
           'Access-Control-Allow-Origin': '*'
         },
-        'statusCode': 201
+        statusCode: 201
       })
-      expect(handler.http.postResponse).toHaveBeenCalledWith({ 'pages': [{ 'id': '47129534', 'questions': [{ 'answers': [{ 'text': 'URL' }], 'id': '164341787' }, { 'answers': [{ 'choice_id': '1155115697' }], 'id': '164341788' }] }], 'response_status': 'partial' })
+      expect(handler.http.postResponse).toHaveBeenCalledWith({ pages: [{ id: '47129534', questions: [{ answers: [{ text: 'URL' }], id: '164341787' }, { answers: [{ choice_id: '1155115697' }], id: '164341788' }] }], response_status: 'partial' })
     })
   })
 
   test('with a body', () => {
-    let handler = new Handler()
+    const handler = new Handler()
     handler.http.postResponse = jest.fn().mockImplementation(() => Promise.resolve({
       id: '123'
     }))
 
-    let response = handler.handle({
+    const response = handler.handle({
       body: JSON.stringify({
         url: 'URL',
         useful: false
@@ -53,26 +53,26 @@ describe('.handle() - new', () => {
 
     return response.then((res) => {
       expect(res).toEqual({
-        'body': '{"id":"123"}',
-        'headers': {
+        body: '{"id":"123"}',
+        headers: {
           'Access-Control-Allow-Credentials': true,
           'Access-Control-Allow-Origin': '*'
         },
-        'statusCode': 201
+        statusCode: 201
       })
-      expect(handler.http.postResponse).toHaveBeenCalledWith({ 'pages': [{ 'id': '47129534', 'questions': [{ 'answers': [{ 'text': 'URL' }], 'id': '164341787' }, { 'answers': [{ 'choice_id': '1155115697' }], 'id': '164341788' }] }], 'response_status': 'partial' })
+      expect(handler.http.postResponse).toHaveBeenCalledWith({ pages: [{ id: '47129534', questions: [{ answers: [{ text: 'URL' }], id: '164341787' }, { answers: [{ choice_id: '1155115697' }], id: '164341788' }] }], response_status: 'partial' })
     })
   })
 })
 
 describe('.handle() - update', () => {
   test('without a body', () => {
-    let handler = new Handler()
+    const handler = new Handler()
     handler.http.putResponse = jest.fn().mockImplementation(() => Promise.resolve({
       id: '123'
     }))
 
-    let response = handler.handle({
+    const response = handler.handle({
       id: '123',
       url: 'URL',
       useful: false
@@ -82,24 +82,24 @@ describe('.handle() - update', () => {
 
     return response.then((res) => {
       expect(res).toEqual({
-        'body': '{"id":"123"}',
-        'headers': {
+        body: '{"id":"123"}',
+        headers: {
           'Access-Control-Allow-Credentials': true,
           'Access-Control-Allow-Origin': '*'
         },
-        'statusCode': 201
+        statusCode: 201
       })
-      expect(handler.http.putResponse).toHaveBeenCalledWith('123', { 'pages': [{ 'id': '47129534', 'questions': [{ 'answers': [{ 'text': 'URL' }], 'id': '164341787' }, { 'answers': [{ 'choice_id': '1155115697' }], 'id': '164341788' }] }], 'response_status': 'partial' })
+      expect(handler.http.putResponse).toHaveBeenCalledWith('123', { pages: [{ id: '47129534', questions: [{ answers: [{ text: 'URL' }], id: '164341787' }, { answers: [{ choice_id: '1155115697' }], id: '164341788' }] }], response_status: 'partial' })
     })
   })
 
   test('with a body', () => {
-    let handler = new Handler()
+    const handler = new Handler()
     handler.http.putResponse = jest.fn().mockImplementation(() => Promise.resolve({
       id: '123'
     }))
 
-    let response = handler.handle({
+    const response = handler.handle({
       body: JSON.stringify({
         id: '123',
         url: 'URL',
@@ -111,14 +111,14 @@ describe('.handle() - update', () => {
 
     return response.then((res) => {
       expect(res).toEqual({
-        'body': '{"id":"123"}',
-        'headers': {
+        body: '{"id":"123"}',
+        headers: {
           'Access-Control-Allow-Credentials': true,
           'Access-Control-Allow-Origin': '*'
         },
-        'statusCode': 201
+        statusCode: 201
       })
-      expect(handler.http.putResponse).toHaveBeenCalledWith('123', { 'pages': [{ 'id': '47129534', 'questions': [{ 'answers': [{ 'text': 'URL' }], 'id': '164341787' }, { 'answers': [{ 'choice_id': '1155115697' }], 'id': '164341788' }] }], 'response_status': 'partial' })
+      expect(handler.http.putResponse).toHaveBeenCalledWith('123', { pages: [{ id: '47129534', questions: [{ answers: [{ text: 'URL' }], id: '164341787' }, { answers: [{ choice_id: '1155115697' }], id: '164341788' }] }], response_status: 'partial' })
     })
   })
 })

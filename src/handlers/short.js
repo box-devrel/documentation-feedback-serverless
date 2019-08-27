@@ -8,8 +8,8 @@ class Handler {
   }
 
   async handle (event) {
-    let data = event.body ? JSON.parse(event.body) : event
-    let response = data.id
+    const data = event.body ? JSON.parse(event.body) : event
+    const response = data.id
       ? (await this.updateShort(data))
       : (await this.submitShort(data))
 
@@ -22,13 +22,13 @@ class Handler {
 
   // Submits the feedback to SurveyMonkey
   async submitShort (data) {
-    let answer = this.template.renderShort(data)
+    const answer = this.template.renderShort(data)
     return this.http.postResponse(answer)
   }
 
   // Updates a short feedback to SurveyMonkey
   async updateShort (data) {
-    let answer = this.template.renderShort(data)
+    const answer = this.template.renderShort(data)
     return this.http.putResponse(data.id, answer)
   }
 }

@@ -8,8 +8,8 @@ test('Template to be a class', () => {
 
 describe('.renderShort()', () => {
   test('with a positive feedback value', () => {
-    let template = new Template()
-    let answer = template.renderShort({
+    const template = new Template()
+    const answer = template.renderShort({
       useful: true,
       url: 'https://example.com/foo/bar'
     })
@@ -21,8 +21,8 @@ describe('.renderShort()', () => {
   })
 
   test('with a negative feedback value', () => {
-    let template = new Template()
-    let answer = template.renderShort({
+    const template = new Template()
+    const answer = template.renderShort({
       useful: false,
       url: 'https://example.com/foo/bar'
     })
@@ -36,8 +36,8 @@ describe('.renderShort()', () => {
 
 describe('.renderLong()', () => {
   test('with a positive feedback value', () => {
-    let template = new Template()
-    let answer = template.renderLong({
+    const template = new Template()
+    const answer = template.renderLong({
       useful: true,
       url: 'https://example.com/foo/bar'
     })
@@ -51,8 +51,8 @@ describe('.renderLong()', () => {
   })
 
   test('with a negative feedback value', () => {
-    let template = new Template()
-    let answer = template.renderLong({
+    const template = new Template()
+    const answer = template.renderLong({
       useful: false,
       url: 'https://example.com/foo/bar'
     })
@@ -65,7 +65,7 @@ describe('.renderLong()', () => {
   })
 
   test('with an email value', () => {
-    let answer = new Template().renderLong({
+    const answer = new Template().renderLong({
       useful: false,
       url: 'https://example.com/foo/bar',
       email: 'foo@bar.com'
@@ -76,7 +76,7 @@ describe('.renderLong()', () => {
   })
 
   test('with an name value', () => {
-    let answer = new Template().renderLong({
+    const answer = new Template().renderLong({
       useful: false,
       url: 'https://example.com/foo/bar',
       name: 'Name'
@@ -87,7 +87,7 @@ describe('.renderLong()', () => {
   })
 
   test('with all data', () => {
-    let answer = new Template().renderLong({
+    const answer = new Template().renderLong({
       useful: false,
       url: 'https://example.com/foo/bar',
       name: 'Name',
